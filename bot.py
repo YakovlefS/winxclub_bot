@@ -73,14 +73,16 @@ async def send_results_to_group(user, answers):
         parse_mode="Markdown"
     )
 
-    for i in [2, 3]:
-        if len(answers) > i and answers[i][0] == "photo":
-            await bot.send_photo(
-                chat_id=GROUP_CHAT_ID,
-                photo=answers[i][1],
-                caption=f"Скрин {i-1}",
-                message_thread_id=THREAD_ID
-            )
+    captions = ["Скрин персонажа", "Скрин круга"]
+
+for idx, i in enumerate([2, 3]):  # ответы с фото — 3-й и 4-й вопрос
+    if len(answers) > i and answers[i][0] == "photo":
+        await bot.send_photo(
+            chat_id=GROUP_CHAT_ID,
+            photo=answers[i][1],
+            caption=captions[idx],
+            message_thread_id=THREAD_ID
+        )
 
 async def main():
     await dp.start_polling(bot)
