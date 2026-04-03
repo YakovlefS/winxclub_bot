@@ -29,7 +29,7 @@ QUESTIONS = [
 @dp.message(CommandStart())
 async def start(message: types.Message):
     await message.answer(
-        "Добро пожаловать в приёмку WinxClub!\nОтветьте, пожалуйста, на несколько вопросов."
+        "Добро пожаловать в приёмку Dzen!\nОтветьте, пожалуйста, на несколько вопросов."
     )
     user_data[message.from_user.id] = {"step": 0, "answers": []}
     await message.answer(QUESTIONS[0])
